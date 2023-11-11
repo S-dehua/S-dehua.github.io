@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  deploy-gh-pages:
+  deploy-home-pages:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ jobs:
       - name: 设置 Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 19
           cache: npm
 
       - name: 安装依赖
