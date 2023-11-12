@@ -8,18 +8,20 @@ folder_path = './docs'
 filter_word = ['http', 'assets']
 filter_folder = ['.vuepress', '@pages']
 image_path = '/assets'
-dev_img_path = './docs/.vuepress/public/assets'
+dev_img_path = './docs/.vuepress/public/assets/'
 is_md_image_dir = '.assets'
 modified_flag = 0
 
 def list_md_files(folder_path,look=False):
     md_files = []
+    dir_files = [f for f in os.listdir(f'{dev_img_path}')]
     for root,dirs,files in os.walk(folder_path):
         dirs[:] = [dir for dir in dirs if dir not in filter_folder]
         md_image_dirs = [dir for dir in dirs if is_md_image_dir in dir]
         for dir in md_image_dirs:
-            shutil.copytree(os.path.join(root,dir), os.path.join(dev_img_path, dir))
-            print(f'cp=>已将文件"{dir}"复制至{dev_img_path}')
+            if dir not in dir_files:
+                shutil.copytree(os.path.join(root,dir), os.path.join(dev_img_path, dir))
+                print(f'cp=>已将文件"{dir}"复制至{dev_img_path}')
         for file in files:
             if file.endswith('.md'):
                 md_files.append(os.path.join(root,file))
