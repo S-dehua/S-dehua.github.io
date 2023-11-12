@@ -34,7 +34,9 @@ def process_line(line):
                 return line
         modified_flag += 1
         relative_path = match.group(1)
-        new_path = f'{image_path}/{relative_path[2:]}'
+        new_path = f'{image_path}/{relative_path}'
+        if relative_path[0] == '.':
+            new_path = f'{image_path}/{relative_path[2:]}'
         line = line.replace(match.group(0), f'![img]({new_path})')
     return line
 
