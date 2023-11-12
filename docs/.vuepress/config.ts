@@ -19,7 +19,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     '/': {
       lang: 'zh-CN',
       title: "Edward Blog",
-      description: '帅德华的学习空间',
+      description: '帅德华的学习空间,博客,IT,前端,后端,大数据,人工智能,深度学习,机器学习,全栈,算法',
     }
   },
   // base: '/', // 默认'/'。如果你想将你的网站部署到如 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/",（否则页面将失去样式等文件）

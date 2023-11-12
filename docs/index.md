@@ -1,7 +1,7 @@
 ---
 home: true
 # heroImage: /img/web.png
-heroText: 帅德华的个人空间
+heroText: Edward Blog
 tagline: Live a noble and honest life. Reviving past times in your old age will help you to enjoy your life again.
 # actionText: 立刻进入 →
 # actionLink: /web/
@@ -38,4 +38,4 @@ features: # 可选的
 
 - **Email**: <a href="mailto:894072666@qq.com">sdhstart@qq.com</a>
 
-</br>  -->
+</br> 
