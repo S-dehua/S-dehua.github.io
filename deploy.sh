@@ -14,6 +14,7 @@ npm run build
 
 # 进入生成的文件夹
 cd $dist_path
+cp -r ../../../.github ./
 
 git init
 git add -A
