@@ -5,7 +5,7 @@ import re
 import shutil
 
 folder_path = './docs'
-filter_word = ['http', 'assets']
+filter_word = ['http', '/assets']
 filter_folder = ['.vuepress', '@pages']
 image_path = '/assets'
 dev_img_path = './docs/.vuepress/public/assets/'
