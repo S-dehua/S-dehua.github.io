@@ -1,7 +1,8 @@
 name: syncToGitee
 on:
   push:
-    branches: [master, home]
+    branches: 
+      - home
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
