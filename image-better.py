@@ -36,7 +36,7 @@ def list_md_files(folder_path,look=False):
 
 def process_line(line):
     global modified_flag
-    match = re.search(r'!\[img\]\((.*?)\)', line)
+    match = re.search(r'!\[*\]\((.*?)\)', line)
     if match:
         for word in filter_word:
             if word in line:
