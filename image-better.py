@@ -42,8 +42,8 @@ def process_line(line):
             if word in line:
                 return line
         modified_flag += 1
-        imagename = match.group(2).split('/',-1)[-1]
-        new_path = f'{image_path}/{imagename}'
+        imagename = match.group(2).split('/',-1)
+        new_path = f'{image_path}/{imagename[-2]}/{imagename[-1]}'
         line = line.replace(match.group(0), f'![img]({new_path})')
     return line
 
