@@ -5,9 +5,9 @@ import re
 import shutil
 
 folder_path = './docs'
-filter_word = ['http', '/assets']
+filter_word = ['http']
 filter_folder = ['.vuepress', '@pages']
-image_path = '/assets'
+image_path = 'https://s-dehua.github.io/assets'
 dev_img_path = './docs/.vuepress/public/assets/'
 is_md_image_dir = '.assets'
 modified_flag = 0
@@ -42,10 +42,8 @@ def process_line(line):
             if word in line:
                 return line
         modified_flag += 1
-        relative_path = match.group(1)
-        new_path = f'{image_path}/{relative_path}'
-        if relative_path[0] == '.':
-            new_path = f'{image_path}/{relative_path[2:]}'
+        imagename = match.group(2).split('/',-1)[-1]
+        new_path = f'{image_path}/{imagename}'
         line = line.replace(match.group(0), f'![img]({new_path})')
     return line
 
