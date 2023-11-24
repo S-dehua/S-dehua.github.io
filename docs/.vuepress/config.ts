@@ -46,14 +46,14 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         link: '/bigdata/',
       },
       {
+        text: '网络安全',
+        link: '/security/',
+      },
+      {
         text: '更多',
         link: '/more/',
       },
       { text: '关于', link: '/about/' },
-      {
-        text: '收藏',
-        link: '/pages/save/',
-      },
       {
         text: '索引',
         link: '/archives/',
